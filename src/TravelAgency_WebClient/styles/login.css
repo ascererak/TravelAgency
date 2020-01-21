@@ -1,0 +1,15 @@
+.login-form {
+    min-width: 200px;
+    background-color: white;
+    margin-bottom: 50px;
+}
+
+.btn-block {
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.create-new-account {
+    text-align: center;
+    
+}
