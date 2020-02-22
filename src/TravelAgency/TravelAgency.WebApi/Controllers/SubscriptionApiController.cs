@@ -4,13 +4,13 @@ using TravelAgency.Interfaces.Services;
 
 namespace TravelAgency.WebApi.Controllers
 {
-    [Route("api/subscriber")]
+    [Route("api/subscription")]
     [ApiController]
-    public class SubscriberApiController : Controller
+    public class SubscriptionApiController : Controller
     {
         private readonly ISubscriberService subscriberService;
 
-        public SubscriberApiController(ISubscriberService subscriberService)
+        public SubscriptionApiController(ISubscriberService subscriberService)
         {
             this.subscriberService = subscriberService;
         }

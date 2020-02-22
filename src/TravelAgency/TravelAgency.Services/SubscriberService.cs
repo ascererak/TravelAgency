@@ -32,8 +32,8 @@ namespace TravelAgency.Services
         {
             IReadOnlyCollection<SubscriberData> subscribers = await subscriberRepository.GetAsync();
 
-            string newsLink = "E:/University/VikulechkiProject/TravelAgency_WebClient/src/news.html";
-            string message = "<p>Hey! Check out our latest news by the link below:" +
+            string newsLink = "https://www.google.com.ua";
+            string message = "<p>Hey! Check out our latest news by the link below: " +
                 $"<a href='{newsLink}'>Link</a></p>";
             string name = "Carpe diem travel agency";
             string email = "carpediem@travel.agency";
