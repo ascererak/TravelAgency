@@ -18,6 +18,8 @@ $(document).ready(function () {
 
     initHamburger();
 
+    createUpperItems();
+
     function setHeader() {
         if (window.innerWidth < 992) {
             if ($(window).scrollTop() > 100) {
@@ -68,4 +70,76 @@ $(document).ready(function () {
         hambActive = false;
         menuActive = false;
     }
+
+    function createUpperItems() {
+
+        var item1 = renderUpperItem(localStorage.getItem("jwt") !== null ? 'profile' : 'login');
+        
+        var item2 = renderUpperItem('cart');
+
+        renderItems(item1, item2);
+    }
+
+    function renderUpperItem(type) {
+        let item = {
+            "iconClass": "fa fa-user",
+            "link": "login.html",
+            "linkText": " Log in",
+            "divClass": "login ml-auto"
+        };
+
+        if (type === 'profile') {
+            item.link = "profile.html";
+            item.linkText = " Profile";
+            item.divClass = "user-profile ml-auto";
+        } else if (type === 'cart') {
+            item.iconClass = "fa fa-shopping-cart";
+            item.link = "cart.html";
+            item.linkText = " Cart";
+            item.divClass = "cart";
+        } else if (type !== 'login') {
+            return;
+        }
+
+        let icon = $('<span>', {
+            'class': item.iconClass
+        });
+
+        let link = $('<a>', {
+            'href': item.link
+        }).append(icon);
+
+        link.append(item.linkText);
+
+        let div =  $('<div>', {
+            'class': item.divClass
+        }).append(link);
+
+        return div;
+    }
+
+    function renderItems(item1, item2) {
+        var div = $('<div>', {
+            'class': 'user-access d-flex'
+        }).append(item1).append(item2);
+
+        div.prependTo($('.col-md-8')[0]);
+    }
 });
+
+// <!-- <div class="login ml-auto">
+// <a href="login.html">
+//     <span class="fa fa-user"></span> Log in
+// </a>
+// </div>
+// <div class="user-profile ml-auto">
+// <a href="profile.html">
+//     <span class="fa fa-user"></span> Profile
+// </a>
+// </div>
+// <div class="cart">
+// <a href="cart.html">
+//     <span class="fa fa-shopping-cart"></span> Cart
+// </a>
+// </div>
+// </div>
