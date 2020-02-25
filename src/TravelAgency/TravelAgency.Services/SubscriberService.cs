@@ -1,8 +1,4 @@
-﻿using MailKit.Net.Smtp;
-using MimeKit;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TravelAgency.Interfaces.DatabaseAccess.Repositories;
 using TravelAgency.Interfaces.Dto;
@@ -12,25 +8,25 @@ using TravelAgency.Services.Interfaces.Handlers;
 
 namespace TravelAgency.Services
 {
-    public class SubscriberService : ISubscriberService
+    public class SubscriptionService : ISubscriptionService
     {
-        private readonly ISubscriberRepository subscriberRepository;
+        private readonly ISubscriptionRepository subscriptionRepository;
         private readonly IMailHandler mailHandler;
 
-        public SubscriberService(ISubscriberRepository subscriberRepository, IMailHandler mailHandler)
+        public SubscriptionService(ISubscriptionRepository subscriptionRepository, IMailHandler mailHandler)
         {
-            this.subscriberRepository = subscriberRepository;
+            this.subscriptionRepository = subscriptionRepository;
             this.mailHandler = mailHandler;
         }
 
         public async Task AddAsync(string subscriberEmail)
         {
-            await subscriberRepository.AddAsycn(subscriberEmail);
+            await subscriptionRepository.AddAsycn(subscriberEmail);
         }
 
         public async Task SendEmailAsync()
         {
-            IReadOnlyCollection<SubscriberData> subscribers = await subscriberRepository.GetAsync();
+            IReadOnlyCollection<SubscriberData> subscribers = await subscriptionRepository.GetAsync();
 
             string newsLink = "https://www.google.com.ua";
             string message = "<p>Hey! Check out our latest news by the link below: " +

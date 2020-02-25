@@ -79,7 +79,7 @@ namespace TravelAgency.Module
             serviceCollection.AddTransient<IOfferRepository, OfferRepository>();
             serviceCollection.AddTransient<IReviewRepository, ReviewRepository>();
             serviceCollection.AddTransient<IApplicationUserRepository, ApplicationUserRepository>();
-            serviceCollection.AddTransient<ISubscriberRepository, SubscriberRepository>();
+            serviceCollection.AddTransient<ISubscriptionRepository, SubscriptionRepository>();
             serviceCollection.AddSingleton<IApplicationRoleRepository, ApplicationRoleRepository>();
             serviceCollection.AddTransient<IManagerRepository, ManagerRepository>();
             serviceCollection.AddTransient<IRegisteredUserRepository, RegisteredUserRepository>();
@@ -96,7 +96,7 @@ namespace TravelAgency.Module
             serviceCollection.AddTransient<INewsService, NewsService>();
             serviceCollection.AddTransient<IOfferService, OfferService>();
             serviceCollection.AddTransient<IReviewService, ReviewService>();
-            serviceCollection.AddTransient<ISubscriberService, SubscriberService>();
+            serviceCollection.AddTransient<ISubscriptionService, SubscriptionService>();
             serviceCollection.AddTransient<IContactService, ContactService>();
             serviceCollection.AddTransient<IAccountService, AccountService>();
             //    serviceCollection.AddTransient<IHotelService, HotelService>();

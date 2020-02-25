@@ -45,7 +45,7 @@ $(document).ready(function(){
         .then(response => response.json())
         .then((res) => {
             for(var i = 0; i < res.length; i++) {
-                if (res[i]['mark'] < 2) {
+                if (res[i]['mark'] < 5) {
                     generateAll(res[i]);
                 }
             }
@@ -115,7 +115,7 @@ $(document).ready(function(){
         }).append(divPopularItemPrice).append(divPopularItemDestination);
     
         var link = $('<a>', {
-            'href': `${config.apiDomain}/api/offers/getdetails/${responce['id']}`
+            'href': `details.html?offerId=${responce['id']}`//`${config.apiDomain}/api/offers/getdetails/${responce['id']}`
         }).append(divPopularItemImage).append(divPopularItemContent);
     
         var divTopItem = $('<div>', {

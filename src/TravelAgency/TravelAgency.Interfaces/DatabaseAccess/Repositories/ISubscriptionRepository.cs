@@ -4,7 +4,7 @@ using TravelAgency.Interfaces.Dto;
 
 namespace TravelAgency.Interfaces.DatabaseAccess.Repositories
 {
-    public interface ISubscriberRepository
+    public interface ISubscriptionRepository
     {
         Task<SubscriberData> AddAsycn(string subscriberData);
 

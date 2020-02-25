@@ -8,18 +8,18 @@ namespace TravelAgency.WebApi.Controllers
     [ApiController]
     public class SubscriptionApiController : Controller
     {
-        private readonly ISubscriberService subscriberService;
+        private readonly ISubscriptionService subscriptionService;
 
-        public SubscriptionApiController(ISubscriberService subscriberService)
+        public SubscriptionApiController(ISubscriptionService subscriptionService)
         {
-            this.subscriberService = subscriberService;
+            this.subscriptionService = subscriptionService;
         }
 
         [HttpGet]
         [Route("send")]
         public async Task<IActionResult> GetAll()
         {
-            await subscriberService.SendEmailAsync();
+            await subscriptionService.SendEmailAsync();
 
             return Json("Probably sent ¯\\_(ツ)_/¯ ");
         }

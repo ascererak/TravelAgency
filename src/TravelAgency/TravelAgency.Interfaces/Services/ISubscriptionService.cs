@@ -2,7 +2,7 @@
 
 namespace TravelAgency.Interfaces.Services
 {
-    public interface ISubscriberService
+    public interface ISubscriptionService
     {
         Task AddAsync(string subscriberEmail);
 

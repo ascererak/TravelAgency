@@ -1,3 +1,3 @@
 config = {
-    apiDomain: "http://localhost:59992"
+    apiDomain: "http://localhost:5000"
 }

@@ -9,11 +9,11 @@ using TravelAgency.Interfaces.Dto;
 
 namespace TravelAgency.DatabaseAccess.Repositories
 {
-    internal class SubscriberRepository : ISubscriberRepository
+    internal class SubscriptionRepository : ISubscriptionRepository
     {
         private readonly ITravelAgencyDbContext context;
 
-        public SubscriberRepository(ITravelAgencyDbContext context)
+        public SubscriptionRepository(ITravelAgencyDbContext context)
         {
             this.context = context;
         }
