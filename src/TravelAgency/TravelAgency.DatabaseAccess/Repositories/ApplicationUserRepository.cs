@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using TravelAgency.DatabaseAccess.Interfaces;
 using Microsoft.AspNetCore.Identity;
-using TravelAgency.DatabaseAccess.Enitities.Identity;
+using TravelAgency.DatabaseAccess.Entities.Identity;
 using TravelAgency.Interfaces.DatabaseAccess.Repositories;
 using TravelAgency.Interfaces.Dto;
 
@@ -58,7 +58,7 @@ namespace TravelAgency.DatabaseAccess.Repositories
                Id = user.Id,
                Email = user.Email,
                RoleId = user.RoleId,
-               Password = user.PasswordHash,
+               Password = user.PasswordHash
            };
 
         private User Map(UserData data)

@@ -10,19 +10,19 @@ namespace TravelAgency.Services.Handlers
     {
         private readonly IApplicationUserRepository applicationUserRepository;
         private readonly ISessionRepository sessionRepository;
-        private readonly IRegisteredUserRepository registeredUserRepository;
+        private readonly IClientRepository clientRepository;
 
         public SessionHandler(
             IApplicationUserRepository applicationUserRepository,
             ISessionRepository sessionRepository,
-            IRegisteredUserRepository registeredUserRepository)
+            IClientRepository clientRepository)
         {
             this.applicationUserRepository = applicationUserRepository;
             this.sessionRepository = sessionRepository;
-            this.registeredUserRepository = registeredUserRepository;
+            this.clientRepository = clientRepository;
         }
 
-        public async Task<RegisteredUserData> GetUserAsync(string token)
+        public async Task<ClientData> GetUserAsync(string token)
         {
             SessionData session = await sessionRepository.GetByTokenAsync(token);
             if (session == null)
@@ -36,7 +36,7 @@ namespace TravelAgency.Services.Handlers
                 return null;
             }
 
-            return registeredUserRepository.FindByUser(user);
+            return clientRepository.FindByUser(user);
         }
     }
 }
