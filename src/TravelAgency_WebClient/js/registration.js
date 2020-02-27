@@ -24,13 +24,14 @@ function validate() {
     };
     if (
       isEmptyField(state.email) ||
-      isEmptyField(state.Name) ||
-      isEmptyField(state.surname) ||
-      isEmptyField(state.passwd) ||
-      isEmptyField(state.confirmPasswd)
+      isEmptyField(state.first_name) ||
+      isEmptyField(state.last_name) ||
+      isEmptyField(state.password) ||
+      isEmptyField(state.confirmPassword) ||
+      isEmptyField(state.phone)
     ) {
       result.message = "Empty fields are not allowed";
-    } else if (state.passwd !== state.confirmPasswd) {
+    } else if (state.password !== state.confirmPassword) {
       result.message = "Passwords should match";
     } else {
       result.message = "Validation complited";
@@ -48,7 +49,7 @@ function formDataToState(formData) {
 
 function submitForm(event) {
     event.preventDefault();
-    var formData = $('.registration-form').serializeArray();
+    var formData = $('.register-form').serializeArray();
     formDataToState(formData);
     let validation = validate();
     if (!validation.successful) {
@@ -58,10 +59,11 @@ function submitForm(event) {
     setStateInfo("ᅠ");
     let dto = {
       email: state.email,
-      username: state.Name,
-      surname: state.surname,
-      role: "registeredUser",
-      password: state.passwd
+      username: state.first_name,
+      surname: state.last_name,
+      role: "client",
+      password: state.password,
+      phone: state.phone
     };
     console.log(dto);
     fetch(config.apiDomain + "/api/account/register", {

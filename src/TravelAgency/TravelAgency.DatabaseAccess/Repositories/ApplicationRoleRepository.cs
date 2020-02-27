@@ -13,7 +13,7 @@ namespace TravelAgency.DatabaseAccess.Repositories
         {
             var authorizedUserRole = new RoleData
             {
-                Name = "registereduser",
+                Name = "client",
                 Id = 1
             };
             var managerRole = new RoleData

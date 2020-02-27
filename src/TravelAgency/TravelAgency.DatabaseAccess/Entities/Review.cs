@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace TravelAgency.DatabaseAccess.Entities
 {
-    internal class News
+    internal class Review
     {
         public int Id { get; set; }
 

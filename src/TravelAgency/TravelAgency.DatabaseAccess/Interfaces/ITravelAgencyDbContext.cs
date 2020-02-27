@@ -1,12 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TravelAgency.DatabaseAccess.Enitities.Users;
 using TravelAgency.DatabaseAccess.Entities;
+using TravelAgency.DatabaseAccess.Entities.Users;
 
 namespace TravelAgency.DatabaseAccess.Interfaces
 {
@@ -24,7 +21,7 @@ namespace TravelAgency.DatabaseAccess.Interfaces
 
         DbSet<Manager> Managers { get; set; }
 
-        DbSet<RegisteredUser> RegisteredUsers { get; set; }
+        DbSet<Client> Clients { get; set; }
 
         DbSet<News> News { get; set; }
 

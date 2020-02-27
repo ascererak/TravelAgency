@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using TravelAgency.DatabaseAccess.Enitities.Identity;
-using TravelAgency.DatabaseAccess.Enitities.Users;
 using TravelAgency.DatabaseAccess.Entities;
+using TravelAgency.DatabaseAccess.Entities.Identity;
+using TravelAgency.DatabaseAccess.Entities.Users;
 using TravelAgency.DatabaseAccess.Interfaces;
 
 namespace TravelAgency.DatabaseAccess
@@ -27,7 +27,7 @@ namespace TravelAgency.DatabaseAccess
 
         public DbSet<Manager> Managers { get; set; }
 
-        public DbSet<RegisteredUser> RegisteredUsers { get; set; }
+        public DbSet<Client> Clients { get; set; }
 
         public DbSet<News> News { get; set; }
 
@@ -50,7 +50,7 @@ namespace TravelAgency.DatabaseAccess
             builder.Entity<Session>().HasKey(u => u.Id);
             builder.Entity<Subscriber>().HasKey(u => u.Id);
             builder.Entity<News>().HasKey(u => u.Id);
-            builder.Entity<RegisteredUser>().HasKey(u => u.UserId);
+            builder.Entity<Client>().HasKey(u => u.Id);
         }
     }
 }

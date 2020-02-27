@@ -17,14 +17,14 @@ namespace TravelAgency.Services
         private readonly IApplicationUserRepository applicationUserRepository;
         private readonly ISessionRepository sessionRepository;
         private readonly IJavascriptWebTokenFactory javascriptWebTokenFactory;
-        private readonly IRegisteredUserRepository registeredUserRepository;
+        private readonly IClientRepository clientRepository;
         private readonly IApplicationRoleRepository applicationRoleRepository;
         private readonly ISessionHandler sessionHandler;
 
         public AccountService(
             IApplicationUserRepository applicationUserRepository,
             ISessionRepository sessionRepository,
-            IRegisteredUserRepository registeredUserRepository,
+            IClientRepository clientRepository,
             IJavascriptWebTokenFactory javascriptWebTokenFactory,
             IApplicationRoleRepository applicationRoleRepository,
             ISessionHandler sessionHandler)
@@ -32,7 +32,7 @@ namespace TravelAgency.Services
             this.applicationUserRepository = applicationUserRepository;
             this.sessionRepository = sessionRepository;
             this.javascriptWebTokenFactory = javascriptWebTokenFactory;
-            this.registeredUserRepository = registeredUserRepository;
+            this.clientRepository = clientRepository;
             this.applicationRoleRepository = applicationRoleRepository;
             this.sessionHandler = sessionHandler;
         }
@@ -57,14 +57,15 @@ namespace TravelAgency.Services
             }
 
             userData = await applicationUserRepository.FindByEmailAsync(userData.Email);
-            RegisteredUserData client = new RegisteredUserData()
+            ClientData client = new ClientData()
             {
                 Name = registrationModel.UserName,
                 Surname = registrationModel.Surname,
                 PhotoPath = "default/profile.png",
-                UserId = userData.Id
+                UserId = userData.Id,
+                Phone = registrationModel.Phone
             };
-            RegisteredUserData addedClient = await registeredUserRepository.AddAsync(client);
+            ClientData addedClient = await clientRepository.AddAsync(client);
             if (addedClient == null)
             {
                 response.Message = "Client not added";
@@ -116,17 +117,17 @@ namespace TravelAgency.Services
         {
             SessionData session = await sessionRepository.GetByTokenAsync(token);
             UserData user = await applicationUserRepository.FindByIdAsync(session.UserId);
-            RegisteredUserData client = registeredUserRepository.FindByUser(user);
+            ClientData client = clientRepository.FindByUser(user);
             var account = new ClientAccountModel()
             {
                 ClientId = client.Id,
                 Email = user.Email,
                 Passport = client.Passport,
-                Telephone = client.Telephone,
+                Telephone = client.Phone,
                 Name = client.Name,
                 Surname = client.Surname,
                 PhotoPath = client.PhotoPath,
-                Role = applicationRoleRepository.Get(user.RoleId).Name,
+                Role = applicationRoleRepository.Get(user.RoleId).Name
             };
             return account;
         }

@@ -5,6 +5,6 @@ namespace TravelAgency.Services.Interfaces.Handlers
 {
     internal interface ISessionHandler
     {
-       Task<RegisteredUserData> GetUserAsync(string token);
+       Task<ClientData> GetUserAsync(string token);
     }
 }

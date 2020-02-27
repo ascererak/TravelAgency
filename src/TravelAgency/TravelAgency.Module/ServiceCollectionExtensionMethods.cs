@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TravelAgency.DatabaseAccess;
-using TravelAgency.DatabaseAccess.Enitities.Identity;
+using TravelAgency.DatabaseAccess.Entities.Identity;
 using TravelAgency.DatabaseAccess.Initializers;
 using TravelAgency.DatabaseAccess.Interfaces;
 using TravelAgency.DatabaseAccess.Repositories;
@@ -82,7 +82,7 @@ namespace TravelAgency.Module
             serviceCollection.AddTransient<ISubscriberRepository, SubscriberRepository>();
             serviceCollection.AddSingleton<IApplicationRoleRepository, ApplicationRoleRepository>();
             serviceCollection.AddTransient<IManagerRepository, ManagerRepository>();
-            serviceCollection.AddTransient<IRegisteredUserRepository, RegisteredUserRepository>();
+            serviceCollection.AddTransient<IClientRepository, ClientRepository>();
             serviceCollection.AddTransient<ISessionRepository, SessionRepository>();
             //    serviceCollection.AddTransient<IHotelRepository, HotelRepository>();
             //    serviceCollection.AddTransient<IOrderRepository, OrderRepository>();

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace TravelAgency.DatabaseAccess.Enitities.Identity
+namespace TravelAgency.DatabaseAccess.Entities.Identity
 {
     internal class User : IdentityUser<int>
     {

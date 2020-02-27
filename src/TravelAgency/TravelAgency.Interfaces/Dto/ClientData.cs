@@ -2,7 +2,7 @@
 
 namespace TravelAgency.Interfaces.Dto
 {
-    public class RegisteredUserData
+    public class ClientData
     {
         public int Id { get; set; }
 
@@ -10,7 +10,7 @@ namespace TravelAgency.Interfaces.Dto
 
         public string Surname { get; set; }
 
-        public string Telephone { get; set; }
+        public string Phone { get; set; }
 
         public string Passport { get; set; }
 
