@@ -10,14 +10,14 @@ using TravelAgency.DatabaseAccess;
 namespace TravelAgency.DatabaseAccess.Migrations
 {
     [DbContext(typeof(TravelAgencyDbContext))]
-    [Migration("20200107184329_Add roles")]
-    partial class Addroles
+    [Migration("20200227170606_Initial Migration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.2-servicing-10034")
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -129,7 +129,7 @@ namespace TravelAgency.DatabaseAccess.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("TravelAgency.DatabaseAccess.Enitities.Identity.User", b =>
+            modelBuilder.Entity("TravelAgency.DatabaseAccess.Entities.Identity.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -165,28 +165,6 @@ namespace TravelAgency.DatabaseAccess.Migrations
                         .HasName("EmailIndex");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("TravelAgency.DatabaseAccess.Enitities.Users.Manager", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("Managers");
-                });
-
-            modelBuilder.Entity("TravelAgency.DatabaseAccess.Enitities.Users.RegisteredUser", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("RegisteredUsers");
                 });
 
             modelBuilder.Entity("TravelAgency.DatabaseAccess.Entities.News", b =>
@@ -305,6 +283,34 @@ namespace TravelAgency.DatabaseAccess.Migrations
                     b.ToTable("Subscribers");
                 });
 
+            modelBuilder.Entity("TravelAgency.DatabaseAccess.Entities.Users.Client", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Phone");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clients");
+                });
+
+            modelBuilder.Entity("TravelAgency.DatabaseAccess.Entities.Users.Manager", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Managers");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>")
@@ -315,7 +321,7 @@ namespace TravelAgency.DatabaseAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
-                    b.HasOne("TravelAgency.DatabaseAccess.Enitities.Identity.User")
+                    b.HasOne("TravelAgency.DatabaseAccess.Entities.Identity.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -323,7 +329,7 @@ namespace TravelAgency.DatabaseAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
-                    b.HasOne("TravelAgency.DatabaseAccess.Enitities.Identity.User")
+                    b.HasOne("TravelAgency.DatabaseAccess.Entities.Identity.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -336,7 +342,7 @@ namespace TravelAgency.DatabaseAccess.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("TravelAgency.DatabaseAccess.Enitities.Identity.User")
+                    b.HasOne("TravelAgency.DatabaseAccess.Entities.Identity.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -344,7 +350,7 @@ namespace TravelAgency.DatabaseAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.HasOne("TravelAgency.DatabaseAccess.Enitities.Identity.User")
+                    b.HasOne("TravelAgency.DatabaseAccess.Entities.Identity.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

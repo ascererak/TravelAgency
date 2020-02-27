@@ -42,7 +42,7 @@ namespace TravelAgency.DatabaseAccess
                                   .Ignore(u => u.TwoFactorEnabled);
 
             builder.Entity<Order>().HasKey(u => u.Id);
-            builder.Entity<Manager>().HasKey(u => u.UserId);
+            builder.Entity<Manager>().HasKey(u => u.Id);
             builder.Entity<Offer>().HasKey(u => u.Id);
             builder.Entity<Review>().HasKey(u => u.Id);
             builder.Entity<Session>().HasKey(u => u.Id);
