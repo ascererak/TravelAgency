@@ -1,3 +1,11 @@
+$(document).ready(function() {
+  $('.btn').click(submitForm);
+
+  if(localStorage.getItem("jwt") !== null) {
+    window.location.href = "index.html";
+  }
+});
+
 var state = {
     email: "",
     password: "",
@@ -7,12 +15,21 @@ var state = {
     success: false
 };
 
+function formDataToState(formData) {
+  formData.forEach(data => {
+      state[data.name] = data.value;
+  });
+  
+}
+
 function setState(data) {
     state[data.name] = data.value;
 }
 
 function submitForm(event) {
     event.preventDefault();
+    var formData = $('.login-form').serializeArray();
+    formDataToState(formData);
     fetch(`${config.apiDomain}/api/account/login`, {
         method: "post",
         body: JSON.stringify({
@@ -28,10 +45,9 @@ function submitForm(event) {
           console.log(res);
           if (res.isSuccessful) {
             setState({ name: "success", value: true });
-            this.props.successCallback(res.token);
-            this.props.history.goBack();
+            loginSuccess(res.token);
           } else {
-            this.setState({ message: res.message });
+            setState({ name: "message", value: "res.message" });
           }
         });
 }
@@ -44,7 +60,7 @@ function loginSuccess(token) {
         if (res && res.email && res.role) {
           localStorage.setItem("name", res.name);
           localStorage.setItem("role", res.role);
-          this.forceUpdate();
+          window.location.href = "index.html";
         }
       });
   };

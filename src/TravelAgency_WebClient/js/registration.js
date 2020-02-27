@@ -1,5 +1,9 @@
 $(document).ready(function() {
     $('.btn').click(submitForm);
+
+    if(localStorage.getItem("jwt") !== null) {
+      window.location.href = "index.html";
+    }
 });
 
 var state = {};
@@ -94,6 +98,7 @@ function loginSuccess(token) {
           localStorage.setItem("name", res.name);
           localStorage.setItem("role", res.role);
           localStorage.setItem("photoPath", "/" + res.photoPath);
+          window.location.href = "index.html";
           //this.forceUpdate();
         }
       });
