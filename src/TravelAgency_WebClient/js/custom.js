@@ -85,7 +85,7 @@ $(document).ready(function () {
             "iconClass": "fa fa-user",
             "link": "login.html",
             "linkText": " Log in",
-            "divClass": "login ml-auto"
+            "divClass": "user-login ml-auto"
         };
 
         if (type === 'profile') {
@@ -96,7 +96,7 @@ $(document).ready(function () {
             item.iconClass = "fa fa-shopping-cart";
             item.link = "cart.html";
             item.linkText = " Cart";
-            item.divClass = "cart";
+            item.divClass = "user-cart";
         } else if (type !== 'login') {
             return;
         }
